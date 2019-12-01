@@ -1,0 +1,8 @@
+{
+  "name": "defizapJS_API",
+  "version": "1.0.0",
+  "description": "API for interacting with DefiZap smart contracts",
+  "main": "DefiZap.js",
+  "repository": "https://github.com/DeFiStrategies/defizapJS_API.git",
+  "license": "MIT"
+}
