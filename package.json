@@ -4,5 +4,15 @@
   "description": "API for interacting with DefiZap smart contracts",
   "main": "DefiZap.js",
   "repository": "https://github.com/DeFiStrategies/defizapJS_API.git",
-  "license": "MIT"
+  
+  "license": "MIT",
+  "scripts": {
+  },
+  "dependencies": {
+    "ethers": "^4.0.40"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4"
+  }
 }
