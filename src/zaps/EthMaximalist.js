@@ -7,6 +7,7 @@ module.exports = class EthMaximalist {
         this.ethMaximalistContract = new ethers.Contract(ethMaxAddress, ethMaxABI, provider)
         this.currentProvider = provider
         this.signer = web3 ? this.currentProvider.getSigner() : null //Get signer from Metamask or set to null for readonly access
+        this.address = ethMaxAddress
         console.log('Eth Maximalist Zap initialized')
     }
 

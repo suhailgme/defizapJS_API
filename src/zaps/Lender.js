@@ -7,6 +7,7 @@ module.exports = class Lender {
         this.lenderContract = new ethers.Contract(lenderAddress, lenderABI, provider)
         this.currentProvider = provider
         this.signer = web3 ? this.currentProvider.getSigner() : null //Get signer from Metamask or set to null for readonly access
+        this.address = lenderAddress
         console.log('Lender Zap initialized')
     }
 
@@ -23,7 +24,7 @@ module.exports = class Lender {
     // Basic sending of Ether to the fallback function of the Lender contract
     // !!! Initiates the sending of Ether !!!
     async useLenderFallback(amount) {
-        resolvedEnsAddress = await this.currentProvider.resolveName(lenderAddress)
+        const resolvedEnsAddress = await this.currentProvider.resolveName(lenderAddress)
         let valueToInvest = ethers.utils.parseEther(amount)
         let txInfo = {
             to: resolvedEnsAddress,
