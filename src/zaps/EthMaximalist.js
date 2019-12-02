@@ -1,6 +1,6 @@
 const ethers = require('ethers');
 const ethMaxABI = require('../../contracts/abis/EthMaximalist.json')
-const ethMaxAddress = require('../../contracts/addresses/mainnet.json').ETH_MAXIMALIST; //TODO: ENS names need to be resolved when using Metamask
+const ethMaxAddress = require('../../contracts/addresses/ensMainnet.json').ETH_MAXIMALIST;
 
 module.exports = class EthMaximalist {
     constructor(provider, web3) {
@@ -23,9 +23,10 @@ module.exports = class EthMaximalist {
     // Basic sending of Ether to the fallback function of the Eth Maximalist contract
     // !!! Initiates the sending of Ether !!!
     async useEthMaximalistFallback(amount) {
+        const resolvedEnsAddress = await this.currentProvider.resolveName(ethMaxAddress) //ENS name needs to be resolved for use with Metamask
         let valueToInvest = ethers.utils.parseEther(amount)
         let txInfo = {
-            to: ethMaxAddress,
+            to: resolvedEnsAddress,
             value: valueToInvest,
             gasLimit: 5000000,
         }
