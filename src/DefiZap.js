@@ -11,7 +11,7 @@ module.exports =  class DefiZap {
         }else{
             this.currentProvider = ethers.getDefaultProvider()
             this.web3 = false
-            console.log('Using Infura/Etherscan provider', provider)
+            console.log('Using Infura/Etherscan provider')
         }
         console.log('Successfully initialized DefiZap')
     }
