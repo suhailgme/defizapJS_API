@@ -1,5 +1,5 @@
 const ethers = require('ethers');
-const ZapService = require('./zaps/utils/ZapService')
+const ZapService = require('./utils/ZapService')
 
 module.exports =  class DefiZap {
     //Default (blank) provider is Infura homestead/mainnet and etherscan, otherwise provider should be 'window.web3' for Metamask

@@ -1,6 +1,6 @@
 const ethers = require('ethers');
-const abiHelper = require('./utils/abiHelper')
-const addressHelper = require('./utils/addressHelper')
+const abiHelper = require('../utils/abiHelper')
+const addressHelper = require('../utils/addressHelper')
 
 module.exports = class GenericZap {
     constructor(provider, web3, zap) {

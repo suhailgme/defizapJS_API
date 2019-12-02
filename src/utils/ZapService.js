@@ -1,6 +1,6 @@
-const Lender = require('../Lender');
-const EthMaximalist = require('../EthMaximalist')
-const ModerateBull = require('../ModerateBull')
+const Lender = require('../zaps/Lender');
+const EthMaximalist = require('../zaps/EthMaximalist')
+const ModerateBull = require('../zaps/ModerateBull')
 
 const Zap = {
     Lender,
