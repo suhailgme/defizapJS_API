@@ -4,27 +4,28 @@ const ethMaxAddress = require('../../contracts/addresses/ensMainnet.json').EthMa
 
 module.exports = class EthMaximalist {
     constructor(provider, web3) {
-        this.ethMaximalistContract = new ethers.Contract(ethMaxAddress, ethMaxABI, provider)
+        this.contract = new ethers.Contract(ethMaxAddress, ethMaxABI, provider)
         this.currentProvider = provider
         this.signer = web3 ? this.currentProvider.getSigner() : null //Get signer from Metamask or set to null for readonly access
         this.address = ethMaxAddress
         console.log('Eth Maximalist Zap initialized')
     }
 
-     // Returns Eth Maximalist contract balance as a Big Number.
+    // Returns contract balance as a Big Number.
     async getBalance() {
-        return await this.ethMaximalistContract.balance()
+        let balance =  await this.contract.balance()
+        return ethers.utils.formatEther(balance.toString())
     }
 
     // Returns owner of Eth Maximalist contract as a string
     async getOwner() {
-        return await this.ethMaximalistContract.owner()
+        return await this.contract.owner()
     }
 
-    // Basic sending of Ether to the fallback function of the Eth Maximalist contract
+    // Basic sending of Ether to the fallback function of the contract
     // !!! Initiates the sending of Ether !!!
-    async useEthMaximalistFallback(amount) {
-        const resolvedEnsAddress = await this.currentProvider.resolveName(ethMaxAddress) //ENS name needs to be resolved for use with Metamask
+    async useFallback(amount) {
+        const resolvedEnsAddress = await this.currentProvider.resolveName(this.address) //ENS name needs to be resolved for use with Metamask
         let valueToInvest = ethers.utils.parseEther(amount)
         let txInfo = {
             to: resolvedEnsAddress,

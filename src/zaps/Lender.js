@@ -4,27 +4,28 @@ const lenderAddress = require('../../contracts/addresses/ensMainnet.json').Lende
 
 module.exports = class Lender {
     constructor(provider, web3) {
-        this.lenderContract = new ethers.Contract(lenderAddress, lenderABI, provider)
+        this.contract = new ethers.Contract(lenderAddress, lenderABI, provider)
         this.currentProvider = provider
         this.signer = web3 ? this.currentProvider.getSigner() : null //Get signer from Metamask or set to null for readonly access
         this.address = lenderAddress
         console.log('Lender Zap initialized')
     }
 
-    // Returns Lender contract balance as a Big Number.
+    // Returns contract balance as a Big Number.
     async getBalance() {
-        return await this.lenderContract.balance()
+        let balance =  await this.contract.balance()
+        return ethers.utils.formatEther(balance.toString())
     }
 
     // Returns owner of contract as a string
     async getOwner() {
-        return await this.lenderContract.owner()
+        return await this.contract.owner()
     }
 
-    // Basic sending of Ether to the fallback function of the Lender contract
+    // Basic sending of Ether to the fallback function of the contract
     // !!! Initiates the sending of Ether !!!
-    async useLenderFallback(amount) {
-        const resolvedEnsAddress = await this.currentProvider.resolveName(lenderAddress)
+    async useFallback(amount) {
+        const resolvedEnsAddress = await this.currentProvider.resolveName(this.address)
         let valueToInvest = ethers.utils.parseEther(amount)
         let txInfo = {
             to: resolvedEnsAddress,
