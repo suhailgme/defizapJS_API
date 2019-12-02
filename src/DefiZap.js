@@ -2,26 +2,15 @@ const ethers = require('ethers');
 const ZapService = require('./zaps/utils/ZapService')
 
 module.exports =  class DefiZap {
-    // Associate with apiKey in future versions?
-    constructor(apiKey = 'dev'){
-        this.apiKey = apiKey
-    }
-
-    //Default provider is Infura homestead/mainnet and etherscan. Signer is for Metamask.
-    async init(provider = null, signer = 'null'){
-        let currentProvider
-        switch(provider){
-            case null:
-                currentProvider = ethers.getDefaultProvider()
-                break
-            case 'metamask':
-                currentProvider = new ethers.providers.Web3Provider(web3.currentProvider)
-                signer = currentProvider.getSigner()
-            default:
-                throw "Provider must be empty or 'metamask'"
+    //Default (blank) provider is Infura homestead/mainnet and etherscan, otherwise provider should be 'window.web3' for Metamask
+    constructor(provider){
+        if(provider){
+            this.currentProvider = new ethers.providers.Web3Provider(provider.currentProvider) //This is the same as window.web3.currentProvider
+            console.log('Connected with MetaMask')
+        }else{
+            this.currentProvider = ethers.getDefaultProvider()
+            console.log('Using Infura/Etherscan provider', provider)
         }
-        this.currentProvider = currentProvider
-        this.signer = signer
         console.log('Successfully initialized DefiZap')
     }
 
