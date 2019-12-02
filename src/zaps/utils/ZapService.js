@@ -7,7 +7,7 @@ const Zap = {
 }
 
 module.exports = class ZapService {
-    constructor(zapName, provider){
-        return new Zap[zapName](provider)
+    constructor(zapName, provider, web3){
+        return new Zap[zapName](provider, web3)
     }
 }
