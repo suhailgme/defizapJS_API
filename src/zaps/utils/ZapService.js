@@ -1,9 +1,11 @@
 const Lender = require('../Lender');
 const EthMaximalist = require('../EthMaximalist')
+const ModerateBull = require('../ModerateBull')
 
 const Zap = {
     Lender,
-    EthMaximalist
+    EthMaximalist,
+    ModerateBull,
 }
 
 module.exports = class ZapService {
