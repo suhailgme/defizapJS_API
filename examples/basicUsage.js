@@ -5,11 +5,12 @@ const DefiZap = require('../src/DefiZap');
 
     const lenderZap = defiZap.zap('Lender')
     const lenderBalance = await lenderZap.getBalance()
-    const lender = await lenderZap.useLenderFallback('0.01') //Invest 0.01 eth into the Lender contract (90% cDai, 10% dLETH2x)
+    const lenderAddress = lenderZap.address
+    // const lender = await lenderZap.useLenderFallback('0.01') //Invest 0.01 eth into the Lender contract (90% cDai, 10% dLETH2x)
     
     const ethMaxZap = defiZap.zap('EthMaximalist')
     const ethMaxBalance = await ethMaxZap.getBalance()
-    const ethMax = await ethMaxZap.useEthMaximalistFallback('0.01') //Invest 0.01 eth into the Eth Maximalist contract (50% dLETH2x, 50% dsWBTC)
+    // const ethMax = await ethMaxZap.useEthMaximalistFallback('0.01') //Invest 0.01 eth into the Eth Maximalist contract (50% dLETH2x, 50% dsWBTC)
 
-    console.log(ethMaxBalance, lenderBalance, lender, ethMax)
+    console.log(ethMaxBalance, lenderBalance, lenderAddress,)
 })()
