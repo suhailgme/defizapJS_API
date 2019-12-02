@@ -1,6 +1,6 @@
 const ethers = require('ethers');
 const lenderABI = require('../../contracts/abis/Lender.json')
-const lenderAddress = require('../../contracts/addresses/ensMainnet.json').LENDER; //TODO: ENS names need to be resolved when using Metamask
+const lenderAddress = require('../../contracts/addresses/ensMainnet.json').Lender;
 
 module.exports = class Lender {
     constructor(provider, web3) {

@@ -1,6 +1,6 @@
 const ethers = require('ethers');
 const ethMaxABI = require('../../contracts/abis/EthMaximalist.json')
-const ethMaxAddress = require('../../contracts/addresses/ensMainnet.json').ETH_MAXIMALIST;
+const ethMaxAddress = require('../../contracts/addresses/ensMainnet.json').EthMaximalist;
 
 module.exports = class EthMaximalist {
     constructor(provider, web3) {
