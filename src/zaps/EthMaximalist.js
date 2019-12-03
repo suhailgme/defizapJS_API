@@ -11,13 +11,13 @@ module.exports = class EthMaximalist {
         console.log('Eth Maximalist Zap initialized')
     }
 
-    // Returns contract balance as a Big Number.
+    // Returns contract balance as a string.
     async getBalance() {
         let balance =  await this.contract.balance()
         return ethers.utils.formatEther(balance.toString())
     }
 
-    // Returns owner of Eth Maximalist contract as a string
+    // Returns owner of contract as a string
     async getOwner() {
         return await this.contract.owner()
     }

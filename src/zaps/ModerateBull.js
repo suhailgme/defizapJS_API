@@ -11,7 +11,7 @@ module.exports = class ModerateBull {
         console.log('Moderate Bull Zap initialized')
     }
 
-    // Returns contract balance as a Big Number.
+    // Returns contract balance as a string.
     async getBalance() {
         let balance =  await this.contract.balance()
         return ethers.utils.formatEther(balance.toString())
