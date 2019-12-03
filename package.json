@@ -1,5 +1,5 @@
 {
-  "name": "defizapJS_API",
+  "name": "defizapJS",
   "version": "1.0.0",
   "description": "API for interacting with DefiZap smart contracts",
   "main": "DefiZap.js",
