@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import './App.css'
-import DefiZap from './defizapJS_API/src/DefiZap' // when in node_modules: import DefiZap from 'DefiZap'
+import DefiZap from 'DefiZap'
 
 
 class ReactExample extends Component {
+
+  state = {valueToInvest = 0.01}
 
   componentDidMount(){
     window.ethereum.enable() //Ask for user permission to interact with Metamask
@@ -16,14 +18,14 @@ class ReactExample extends Component {
   handleLenderClick = async() => {
     const defiZap = this.state.defiZap
     const lender = this.state.lender
-    let tx = await lender.useLenderFallback('0.002') // //Invest 0.0012 eth into the Lender contract (90% cDai, 10% dLETH2x)
+    let tx = await lender.useLenderFallback(this.state.valueToInvest) // //Invest 0.0012 eth into the Lender contract (90% cDai, 10% dLETH2x)
     console.log(tx) // Log the Tx info of the transaction (from/to, gasLimit, gasPrice, hash, etc.)
   }
 
   handleEthMaxClick = async() => {
     const defiZap = this.state.defiZap
     const ethMax = this.state.ethMax
-    let tx = await ethMax.useEthMaximalistFallback('0.002') // Invest 0.002 eth into the Eth Maximalist contract (50% dLETH2x, 50% dsWBTC)
+    let tx = await ethMax.useEthMaximalistFallback(this.state.valueToInvest) // Invest 0.002 eth into the Eth Maximalist contract (50% dLETH2x, 50% dsWBTC)
     console.log(tx) // Log the Tx info of the transaction (from/to, gasLimit, gasPrice, hash, etc.)
   }
 
