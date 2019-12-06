@@ -15,7 +15,8 @@ module.exports = async (provider) => {
         }
     } catch (e) {
         // If Eth Gas Station API is unavailable, use Ethers.js default provider for the gas price. 
-        // Returns identical gas price for fast, average, and slow speed representing the average gas price
+        // Returns identical gas price for fast, average, and slow speed representing the median gas price
+        // of the previous n blocks
         let gasPriceFallback = (await provider.getGasPrice()).toString()
         gasPriceFallback = ethers.utils.formatUnits(gasPriceFallback, 'gwei')
         return {
