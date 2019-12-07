@@ -10,7 +10,7 @@ const DefiZap = require('../src/DefiZap');
     // Invest 0.01 eth into the Lender contract (90% cDai, 10% dLETH2x)
     // Optional argument gasPrice is a string
 
-    // const lender = await lenderZap.useFallback('0.01', gasPrice.fast)  
+    // const lender = await lenderZap.invest('0.01', gasPrice.fast)  
 
     const ethMaxZap = defiZap.zap('EthMaximalist')
     const ethMaxAddress = await ethMaxZap.address
@@ -19,7 +19,7 @@ const DefiZap = require('../src/DefiZap');
     // Invest 0.01 eth into the Eth Maximalist contract (50% dLETH2x, 50% dsWBTC).
     // Omitting optional gas price argument uses median gas price from last blocks
     
-    // const ethMax = await ethMaxZap.useFallback('0.01') 
+    // const ethMax = await ethMaxZap.invest('0.01') 
 
     const moderateBullZap = defiZap.zap('ModerateBull')
     const moderateBullAddress = await moderateBullZap.address
@@ -41,6 +41,6 @@ const DefiZap = require('../src/DefiZap');
         moderateBullAddress, moderateBullBalance,
         superSaverAddress, superSaverBalance,
         doubleBullAddress, doubleBullBalance,
-        gasPrice.fast, gasPrice.average, gasPrice.slow 
+        'Gas Prices:', gasPrice.fast, gasPrice.average, gasPrice.slow 
         )
 })()
