@@ -1,6 +1,7 @@
 const ethers = require('ethers');
 const ZapService = require('./utils/ZapService')
 const gasHelper = require('./utils/gasHelper')
+const transactionHelper = require('./utils/transactionHelper')
 
 module.exports = class DefiZap {
     //Default (blank) provider is Infura homestead/mainnet and etherscan, otherwise provider should be 'window.web3' for Metamask
@@ -19,6 +20,14 @@ module.exports = class DefiZap {
 
     async getGasPrice() {
         return await gasHelper(this.currentProvider)
+    }
+
+    async getTxInfo(txHash) {
+        return await transactionHelper.getTransactionInfo(this.currentProvider, txHash)
+    }
+
+    async waitForTx(txHash){
+        return await transactionHelper.waitForTransaction(this.currentProvider, txHash)
     }
 
     changeProvider(provider) {
