@@ -3,5 +3,11 @@
     "EthMaximalist": "ethmax.defizap.eth",
     "ModerateBull": "moderatebull.defizap.eth",
     "DoubleBull": "doublebull.defizap.eth",
-    "SuperSaver": "supersaver.defizap.eth"
+    "SuperSaver": "supersaver.defizap.eth",
+    "DAIUnipool": "daiunipool.defizap.eth",
+    "MKRUnipool": "mkrunipool.defizap.eth",
+    "SNXUnipool": "snxunipool.defizap.eth",
+    "sETHUnipool": "sethunipool.defizap.eth",
+    "SAIUnipool": "saiunipool.defizap.eth"
+
 }

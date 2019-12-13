@@ -3,5 +3,12 @@
     "EthMaximalist": "0xc36fe594dB560bFDE1BDf5d6b40a7a775d702a1C",
     "ModerateBull": "0x9DC5Ee55De10f9345e9f58EA1539320B9644B2f4",
     "DoubleBull": "0x2e213129b76d4b12abf590bf18874362ce0976dc",
-    "SuperSaver": "0xd31c3dec5ae4051dc1b70f2cdec965e80880f386"
+    "SuperSaver": "0xd31c3dec5ae4051dc1b70f2cdec965e80880f386",
+    "DAIUnipool": "0x929A10EfDA7099865dAD8286Aee8715078902d51",
+    "SNXUnipool": "0xe3385df5b47687405A02Fc24322DeDb7df381852",
+    "MKRUnipool": "0x13240b97c40D7E306cEDf3adc9cB057CeC74c361",
+    "sETHUnipool": "0xd3EBA712988df0F8A7e5073719A40cE4cbF60b33",
+    "SAIUnipool": "0xEfD082CC1B847614a446f724e12935ad0660cEAc",
+    "ServiceProviderEthSaiZap": "0x7F87EcCb156EdA91D74Bb6546b4155f0bA0d04d1",
+    "ServiceProviderEthSethZap": "0xFb86852EC41A6220eABe1bcb1E4B606e46eb2Dd9"
 }
