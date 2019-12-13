@@ -4,14 +4,13 @@ const addressHelper = require('../utils/addressHelper')
 
 module.exports = class GenericZap {
     constructor(zap, provider, web3) {
-        const zapABI = abiHelper(zap)
-        const zapAddress = addressHelper(zap)
-        this.contract = new ethers.Contract(zapAddress, zapABI, provider)
+        this.ABI = abiHelper(zap)
+        this.address = addressHelper(zap)
+        this.contract = new ethers.Contract(this.address, this.ABI, provider)
         this.currentProvider = provider
         this.signer = web3 ? this.currentProvider.getSigner() : null //Get signer from Metamask or set to null for readonly access
         this.name = zap
-        this.address = zapAddress
-        console.log(`${zap} Zap initialized`)
+        console.log(`${this.name} Zap initialized`)
     }
 
     // Returns Lender contract balance as a Big Number.
@@ -48,8 +47,8 @@ module.exports = class GenericZap {
                 break
             case 'ModerateBull':
                 txInfo.gasPrice = ethers.utils.parseUnits('1.0', 'gwei')
-                tx = await this.contractWithSigner.LetsInvest(txInfo)
-                break
+                // tx = await this.contractWithSigner.LetsInvest(txInfo)
+                // break
             default:
                 tx = await this.contractWithSigner.LetsInvest(txInfo)
                 break
@@ -77,4 +76,24 @@ module.exports = class GenericZap {
 
     }
 
+    async withdrawServiceTokens(numTokens) {
+        this.contractWithSigner = this.contract.connect(this.signer)
+        return await this.contractWithSigner.withdrawServiceChargeTokens(numTokens)
+    }
+
+    async getTotalServiceChargeTokens() {
+        this.contractWithSigner = this.contract.connect(this.signer)
+        return await this.contractWithSigner.get_TotalServiceChargeTokens()
+    }
+
+    async estimateGas(amount) {
+        let valueToInvest = ethers.utils.parseEther(amount)
+        const estimateKey = '0x0123456789012345678901234567890123456789012345678901234567890123'
+        const estimateWallet = new ethers.Wallet(estimateKey, this.currentProvider)
+        let txInfo = {
+            to: this.address,
+            value: valueToInvest,
+        }
+        return await this.currentProvider.estimateGas(txInfo)
+    }
 }
